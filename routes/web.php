@@ -56,6 +56,11 @@ Route::resource('user', UserController::class)->middleware('auth');
 //buku
 Route::resource('/buku', BukuController::class);
 
+Route::get('/migration', function () {
+    Artisan::call('migrate:fresh');
+    Artisan::call('db:seed');
+});
+
 //kategori
 Route::resource('/kategori', KategoriC::class);
 
