@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -58,6 +59,14 @@ Route::resource('/buku', BukuController::class);
 //kategori
 Route::resource('/kategori', KategoriC::class);
 
+Route::get('/migration', function () {
+    Artisan::call('migrate:fresh');
+    Artisan::call('db:seed');
+
 Route::get('/transaksi', function () {
     return view('admin.transaksi');
+
+
+});  
+    
 });
